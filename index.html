@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling System</title>
+    <style>
+        body {
+            background-color: #050b18; /* Deep dark blue */
+            color: #00e5ff; /* Electric Cyan */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #system-box {
+            width: 90%;
+            max-width: 400px;
+            border: 2px solid #00e5ff;
+            background: rgba(5, 11, 24, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 20px #00e5ff;
+            text-align: left;
+            position: relative;
+        }
+
+        h2 { border-bottom: 1px solid #00e5ff; padding-bottom: 10px; margin-top: 0; }
+
+        .quest-item { margin: 15px 0; font-size: 1.1em; }
+
+        button {
+            background: transparent;
+            border: 1px solid #00e5ff;
+            color: #00e5ff;
+            padding: 10px 20px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover { background: #00e5ff; color: black; }
+    </style>
+</head>
+<body>
+
+<div id="system-box">
+    <h2>[QUEST INFO]</h2>
+    <div class="quest-item"><b>NAME:</b> Daily Training</div>
+    <div class="quest-item"><b>GOAL:</b> 100 Pushups, 100 Sit-ups, 10km Run</div>
+    <div class="quest-item"><b>PENALTY:</b> None</div>
+    <br>
+    <button onclick="startSystem()">ACCEPT QUEST</button>
+</div>
+
+<script>
+    function startSystem() {
+        // The System Voice
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = "Welcome, Player. A new quest has been discovered. You have accepted the daily training.";
+        msg.lang = 'en-US';
+        msg.rate = 0.9; // Slightly slower for that AI robotic feel
+        window.speechSynthesis.speak(msg);
+        
+        alert("Quest Accepted!");
+    }
+</script>
+
+</body>
+</html>
