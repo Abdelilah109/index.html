@@ -1,3 +1,5 @@
+![Static Badge](https://img.shields.io/badge/Bounty-100%2B_USD-green)
+![Static Badge](https://img.shields.io/badge/Security-SHA--256-blue)
 THE VAULT-77 EXPERIMENT: A $100+ Cryptographic Bounty That Evolves Every Hour
 A digital vault has appeared on the internet that claims to be "unbreakable." The prize pool is growing, the stakes are rising, and there can be only one winner.
 
