@@ -3,72 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Leveling System</title>
+    <title>VAULT-77 | THE EVER-EVOLVING CHALLENGE</title>
     <style>
-        body {
-            background-color: #050b18; /* Deep dark blue */
-            color: #00e5ff; /* Electric Cyan */
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        #system-box {
-            width: 90%;
-            max-width: 400px;
-            border: 2px solid #00e5ff;
-            background: rgba(5, 11, 24, 0.9);
-            padding: 20px;
-            box-shadow: 0 0 20px #00e5ff;
-            text-align: left;
-            position: relative;
-        }
-
-        h2 { border-bottom: 1px solid #00e5ff; padding-bottom: 10px; margin-top: 0; }
-
-        .quest-item { margin: 15px 0; font-size: 1.1em; }
-
-        button {
-            background: transparent;
-            border: 1px solid #00e5ff;
-            color: #00e5ff;
-            padding: 10px 20px;
-            width: 100%;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        button:hover { background: #00e5ff; color: black; }
+        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; text-align: center; padding: 20px; }
+        .terminal { border: 2px solid #00ff41; background: #000; display: inline-block; padding: 40px; border-radius: 5px; box-shadow: 0 0 40px #003300; max-width: 750px; width: 95%; margin-top: 20px; }
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .stat-box { border: 1px solid #00ff41; padding: 15px; background: #0a0a0a; }
+        .big-number { font-size: 2.8rem; color: #fff; text-shadow: 0 0 15px #00ff41; }
+        .cipher { background: #111; padding: 20px; border: 1px dashed #ff0000; color: #ff0000; word-break: break-all; margin: 20px 0; font-size: 1.1rem; }
+        .btn { background: #00ff41; color: #000; padding: 20px 40px; text-decoration: none; font-weight: bold; font-size: 1.3rem; border: none; cursor: pointer; display: inline-block; width: 100%; box-sizing: border-box; }
+        .btn:hover { background: #fff; box-shadow: 0 0 20px #fff; }
+        #guessSection { display: none; margin-top: 30px; border-top: 1px solid #333; padding-top: 20px; }
+        input { background: #000; border: 1px solid #00ff41; color: #00ff41; padding: 15px; width: 100%; margin-bottom: 20px; box-sizing: border-box; font-size: 1.2rem; }
+        .leaderboard { margin-top: 30px; border: 1px solid #333; padding: 15px; background: #050505; text-align: left; }
+        .leaderboard h4 { color: #ff0000; margin-top: 0; text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .rules-section { margin-top: 40px; text-align: left; font-size: 0.75rem; color: #666; border-top: 1px solid #333; padding-top: 20px; line-height: 1.4; }
+        .winner-tag { color: gold; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
-<div id="system-box">
-    <h2>[QUEST INFO]</h2>
-    <div class="quest-item"><b>NAME:</b> Daily Training</div>
-    <div class="quest-item"><b>GOAL:</b> 100 Pushups, 100 Sit-ups, 10km Run</div>
-    <div class="quest-item"><b>PENALTY:</b> None</div>
-    <br>
-    <button onclick="startSystem()">ACCEPT QUEST</button>
+<div class="terminal">
+    <div class="winner-tag">Strictly One Winner | Timestamp-Verified Breach</div>
+    <h1>[ VAULT_77_SYSTEM_ACTIVE ]</h1>
+    
+    <div class="stat-grid">
+        <div class="stat-box">
+            <div>CURRENT PRIZE POOL</div>
+            <div class="big-number" id="prizeDisplay">$100</div>
+        </div>
+        <div class="stat-box">
+            <div>NEXT ENTRY FEE</div>
+            <div class="big-number" id="feeDisplay">$1</div>
+        </div>
+    </div>
+
+    <div class="cipher">MJMDB7S2DvDz7D91eqmBLQfd4rjEC5xU/2pp8RZ72Yogkg==</div>
+
+    <div id="paymentSection">
+        <p style="color: red; font-weight: bold;">[!] SYSTEM LOCKED: DECRYPTION BUFFER REQUIRES INITIALIZATION</p>
+        <a href="#" id="payLink" target="_blank" class="btn" onclick="unlockConsole()">PAY ENTRY FEE & UNLOCK CONSOLE</a>
+    </div>
+
+    <div id="guessSection">
+        <h3>DECRYPTION CONSOLE ONLINE</h3>
+        <input type="text" id="userInput" placeholder="Enter Master Key String...">
+        <button class="btn" onclick="checkGuess()">VERIFY SYSTEM BREACH</button>
+        <div id="result" style="margin-top:20px;"></div>
+    </div>
+
+    <div class="leaderboard">
+        <h4>HALL OF FAILED ATTEMPTS</h4>
+        <div id="leaderboardList" style="font-size: 0.8rem; height: 80px; overflow-y: auto; color: #888;">
+            - No attempts logged in current session...
+        </div>
+    </div>
+
+    <div class="rules-section">
+        <strong>CHALLENGE PROTOCOL & CONDITIONS:</strong><br>
+        1. <strong>FIRST-TO-BREACH:</strong> Only the first successful decryption wins. earliest PayPal timestamp at <em>karroumiabdo580@gmail.com</em> wins.<br>
+        2. <strong>EVOLUTION:</strong> Every failure increases Prize by <strong>$100</strong> and Entry Fee by <strong>$1</strong>.<br>
+        3. <strong>VERIFICATION:</strong> Local SHA-256 hashing. Payout via PayPal within 24h of review.
+    </div>
 </div>
 
 <script>
-    function startSystem() {
-        // The System Voice
-        const msg = new SpeechSynthesisUtterance();
-        msg.text = "Welcome, Player. A new quest has been discovered. You have accepted the daily training.";
-        msg.lang = 'en-US';
-        msg.rate = 0.9; // Slightly slower for that AI robotic feel
-        window.speechSynthesis.speak(msg);
-        
-        alert("Quest Accepted!");
-    }
-</script>
+    const PAYPAL_EMAIL = "karroumiabdo580@gmail.com";
+    const MASTER_HASH = "630d7037b51e0486f030283f50873d937ca2506e0292728956f4699252089c9e";
+    
+    let localFails = parseInt(localStorage.getItem('v77_fails')) || 0;
+    let failHistory = JSON.parse(localStorage.getItem('v77_history')) || [];
 
+    function updateDisplay() {
+        const prize = 100 + (localFails * 100);
+        const fee = 1 + localFails;
+        
+        document.getElementById('prizeDisplay').innerText = "$" + prize;
+        document.getElementById('feeDisplay').innerText = "$" + fee;
+        document.getElementById('payLink').href = `https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${encodeURIComponent(PAYPAL_EMAIL)}&amount=${fee}&currency_code=USD&item_name=Vault77_Challenge_Entry`;
+        
+        const list = document.getElementById('leaderboardList');
+        if (failHistory.length > 0) {
+            list.innerHTML = failHistory.map(entry => `<div>[${entry.time}] FAILED_ATTEMPT: "${entry.guess.substring(0,10)}..."</div>`).reverse().join('');
+        }
+    }
+
+    function unlockConsole() {
+        document.getElementById('paymentSection').style.display = 'none';
+        document.getElementById('guessSection').style.display = 'block';
+    }
+
+    async function checkGuess() {
+        const input = document.getElementById('userInput').value.trim();
+        if(!input) return;
+
+        const msgUint8 = new TextEncoder().encode(input);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const userHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+        const resultDiv = document.getElementById('result');
+
+        if (userHash === MASTER_HASH) {
+            resultDiv.innerHTML = "<h2 style='color:gold'>🏆 VAULT BREACHED!</h2><p>Contact abdelilah.karroumi@ump.ac.ma</p>";
+        } else {
+            resultDiv.innerHTML = "<p style='color:red'>❌ ACCESS DENIED. SYSTEM EVOLVED.</p>";
+            
+            // Log to local history
+            const now = new Date().toLocaleTimeString();
+            failHistory.push({time: now, guess: input});
+            localFails++;
+            
+            localStorage.setItem('v77_fails', localFails);
+            localStorage.setItem('v77_history', JSON.stringify(failHistory));
+            
+            setTimeout(() => { 
+                updateDisplay();
+                location.reload(); 
+            }, 2500);
+        }
+    }
+
+    updateDisplay();
+</script>
 </body>
 </html>
