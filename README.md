@@ -40,3 +40,23 @@ Unlimited Iterations: You will have a permanent "power-user" status in our inter
 The vault is active. The "Hall of Failed Attempts" is growing. You can either be the one to fund the prize, or the one to take it all.
 
 Will you be the one to breach Vault-77?
+1. The "Technical Proof" Reply (For Skeptics)
+Use this when someone says the code doesn't work or the answer isn't real.
+
+"The master key is locked in a public SHA-256 hash. You can see it right in the source code: 630d7037b51e0486f030283f50873d937ca2506e0292728956f4699252089c9e.
+
+I can't change the answer, and I can't fake the result. The math is public. It’s hard because it’s a high-stakes vault, not a basic riddle. If it were easy, the prize wouldn't be growing this fast. 🛡️"
+
+2. The "Competitive" Reply (To Create Hype)
+Use this when someone says "It’s too hard for $1."
+
+"It's a bounty, not a giveaway. Only one person on the planet is going to walk away with the cash and the Gemini Lifetime Pro status. Every time someone fails, the prize jumps by $100.
+
+If you think you’ve got the logic to breach it, the console is open. If not, thanks for helping fund the eventual winner's jackpot! 💸"
+
+3. The "Hype-Man" Reply (When the Prize Pool grows)
+Use this when the prize hits a big number like $500 or $1,000.
+
+"🚨 SYSTEM UPDATE: Another 3 failed breaches recorded. The vault has evolved. The bounty is now at $100.
+
+The 'Hall of Failed Attempts' is getting crowded. Is there actually a dev out there who can handle a SHA-256 sequence or is the vault truly uncrackable? 🧪"
