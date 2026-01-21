@@ -5,53 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VAULT-78: OBSIDIAN GENESIS</title>
     <style>
-        body { background-color: #050505; color: #00ff00; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        #terminal { width: 90%; max-width: 500px; border: 2px solid #00ff00; padding: 30px; background: rgba(0, 10, 0, 0.95); box-shadow: 0 0 30px rgba(0, 255, 0, 0.3); position: relative; }
-        h1 { font-size: 1.8rem; text-align: center; letter-spacing: 5px; margin-bottom: 20px; color: #fff; text-shadow: 0 0 10px #00ff00; }
-        .bounty-tag { text-align: center; color: #ffcc00; font-weight: bold; font-size: 1.2rem; margin-bottom: 20px; border: 1px solid #ffcc00; padding: 5px; }
-        .step { margin-bottom: 15px; padding: 10px; border: 1px solid #222; }
-        .step-title { font-size: 0.8rem; color: #888; margin-bottom: 5px; display: block; }
-        button { width: 100%; padding: 12px; font-family: inherit; font-weight: bold; cursor: pointer; border: none; text-transform: uppercase; transition: 0.2s; }
-        #pay-btn { background: #0070ba; color: white; margin-bottom: 5px; }
-        #verify-pay-btn { background: #333; color: #888; margin-bottom: 10px; }
-        #breach-btn { background: #00ff00; color: #000; opacity: 0.2; cursor: not-allowed; }
-        input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: #00ff00; font-family: inherit; margin-bottom: 10px; box-sizing: border-box; outline: none; }
-        input:disabled { border-color: #111; color: #222; }
-        .coupon-area { font-size: 0.7rem; text-align: center; margin-top: 10px; border-top: 1px solid #222; padding-top: 10px; }
-        #coupon-input { width: 60%; padding: 5px; font-size: 0.7rem; border: 1px solid #444; }
-        #admin-overlay { display: none; position: fixed; top: 10px; right: 10px; background: #000; border: 1px solid #00ff00; padding: 10px; font-size: 0.7rem; z-index: 100; }
+        :root { --glow: #00ff00; --bg: #050505; }
+        body { background-color: var(--bg); color: var(--glow); font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        #terminal { width: 100%; max-width: 550px; border: 2px solid var(--glow); padding: 30px; background: rgba(0, 15, 0, 0.98); box-shadow: 0 0 40px rgba(0, 255, 0, 0.2); position: relative; }
+        h1 { font-size: 1.8rem; text-align: center; letter-spacing: 8px; margin-bottom: 10px; color: #fff; text-shadow: 0 0 10px var(--glow); }
+        .bounty-tag { text-align: center; color: #ffcc00; font-weight: bold; font-size: 1.4rem; margin-bottom: 20px; border: 2px solid #ffcc00; padding: 10px; background: rgba(255, 204, 0, 0.1); }
+        .step { margin-bottom: 20px; padding: 15px; border: 1px solid #222; background: rgba(0,0,0,0.5); }
+        .step-title { font-size: 0.75rem; color: #888; margin-bottom: 8px; display: block; text-transform: uppercase; }
+        button { width: 100%; padding: 14px; font-family: inherit; font-weight: bold; cursor: pointer; border: none; text-transform: uppercase; transition: 0.3s; margin-bottom: 10px; }
+        #pay-btn { background: #0070ba; color: white; } 
+        #verify-pay-btn { background: #333; color: #888; }
+        #breach-btn { background: var(--glow); color: #000; opacity: 0.2; cursor: not-allowed; }
+        input { width: 100%; padding: 12px; background: #000; border: 1px solid #333; color: var(--glow); font-family: inherit; margin-bottom: 10px; box-sizing: border-box; outline: none; }
+        .legal-shield { font-size: 0.65rem; color: #555; margin-top: 20px; line-height: 1.4; border-top: 1px solid #222; padding-top: 15px; }
+        #admin-overlay { display: none; position: fixed; top: 10px; right: 10px; background: #000; border: 1px solid var(--glow); padding: 12px; font-size: 0.7rem; z-index: 100; box-shadow: 0 0 10px var(--glow); }
+        #monitor-light { width: 8px; height: 8px; border-radius: 50%; background: var(--glow); display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div id="admin-overlay">
+        <div id="monitor-light"></div> SYSTEM WATCHDOG: ACTIVE<br>
         ARCHITECT: USER 007<br>
-        TARGET: $1,000.00<br>
-        STATUS: ENCRYPTED
+        BOUNTY: $1,000.00 USD<br>
+        IP LOGGING: ENABLED
     </div>
 
     <div id="terminal">
         <h1>VAULT-78</h1>
-        <div class="bounty-tag">BOUNTY: $1,000.00 USD</div>
+        <div class="bounty-tag">REWARD: $1,000.00 + PRO ACCESS</div>
         
         <div class="step">
-            <span class="step-title">PHASE 1: AUTHENTICATION FEE ($2.00)</span>
-            <button id="pay-btn" onclick="executePayment()">PAY VIA PAYPAL</button>
-            <button id="verify-pay-btn" onclick="unlockVaultInterface()">I HAVE PAID (UNLOCK)</button>
-            
-            <div class="coupon-area">
-                HAVE A COUPON? <input type="text" id="coupon-input" placeholder="CODE">
-                <button onclick="checkCoupon()" style="width:auto; padding:5px; font-size:0.7rem; background:#444; color:#00ff00;">APPLY</button>
+            <span class="step-title">1. AUTHENTICATION (FEE: $2.00)</span>
+            <button id="pay-btn" onclick="executePayment()">SECURE PAY VIA PAYPAL</button>
+            <button id="verify-pay-btn" onclick="unlockVaultInterface()">CONFIRM PAYMENT & UNLOCK</button>
+            <div style="text-align:center;">
+                <input type="text" id="coupon-input" placeholder="COUPON CODE" style="width: 50%; font-size: 0.7rem; padding: 5px; margin-top:10px;">
+                <button onclick="checkCoupon()" style="width: auto; padding: 5px 15px; font-size: 0.7rem; background: #222; color: #00ff00;">APPLY</button>
             </div>
         </div>
 
         <div class="step">
-            <span class="step-title">PHASE 2: DECRYPTION</span>
-            <input type="text" id="vault-input" placeholder="[LOCKED]" disabled autocomplete="off">
-            <button id="breach-btn" onclick="attemptBreach()" disabled>RUN DECRYPTION</button>
+            <span class="step-title">2. DECRYPTION CORE</span>
+            <p id="hint-text" style="display:none; color:#ffcc00; font-size:0.75rem; text-align:center; margin-bottom:10px;">[HINT UNLOCKED: Starts with 'Vau']</p>
+            <input type="text" id="vault-input" placeholder="[LOCKED: COMPLETE STEP 1]" disabled autocomplete="off">
+            <button id="breach-btn" onclick="attemptBreach()" disabled>RUN DECRYPTION PROTOCOL</button>
         </div>
 
-        <p style="font-size: 0.6rem; color: #444; text-align: center;">Powered by Gemini Pro "Obsidian" Security.</p>
+        <div class="legal-shield">
+            <strong>OFFICIAL TERMS (LEGAL SHIELD):</strong><br>
+            By attempting this breach, you agree that the $2.00 fee is a non-refundable contribution to the bounty research. 
+            The winner is determined by the first person to provide the correct Master Key alongside a verified PayPal Transaction ID 
+            matching the timestamp. The Architect (User 007) holds sole authority over winner verification. Fraudulent claims will result in IP blacklisting.
+        </div>
+        
+        <p style="font-size: 0.6rem; color: #333; text-align: center; margin-top: 15px;">
+            SYSTEM STATUS: <span id="sys-status" style="color:green;">ENCRYPTED & STABLE</span>
+        </p>
     </div>
 
     <script>
@@ -59,28 +70,42 @@
         const SALT = "Genesis_007_Secure_2026";
         const TARGET = "96d66e7686561f93014c6270992383181878d65427d142147171d70d38e2181d";
         
-        // COUPON LOGIC
-        const SECRET_COUPON = "FREE007"; // You can change this code
+        const FREE_COUPON = "FREE007"; 
+        const HINT_COUPON = "VIPHINT";
+
+        // 5-SECOND SELF-TEST MONITOR
+        setInterval(() => {
+            const status = document.getElementById('sys-status');
+            if (TARGET.startsWith("96d66e76")) {
+                status.innerText = "ONLINE (VERIFIED)";
+                status.style.color = "green";
+            } else {
+                status.innerText = "CRITICAL ERROR";
+                status.style.color = "red";
+            }
+        }, 5000);
 
         function checkCoupon() {
             const code = document.getElementById('coupon-input').value;
-            if (code === SECRET_COUPON) {
-                alert("COUPON ACCEPTED. ARCHITECT ACCESS GRANTED.");
+            if (code === FREE_COUPON) {
+                alert("ACCESS GRANTED: Creator Coupon Active.");
+                unlockVaultInterface();
+            } else if (code === HINT_COUPON) {
+                alert("VIP ACCESS: Hint Decrypted.");
+                document.getElementById('hint-text').style.display = "block";
                 unlockVaultInterface();
             } else {
-                alert("INVALID COUPON.");
+                alert("INVALID AUTHORIZATION CODE.");
             }
         }
 
         function executePayment() {
-            window.open(`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${ARCHITECT_EMAIL}&item_name=Vault78_Entry&amount=2.00&currency_code=USD`, '_blank');
-            document.getElementById('verify-pay-btn').style.background = "#ffcc00";
-            document.getElementById('verify-pay-btn').style.color = "#000";
+            window.open(`https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=${ARCHITECT_EMAIL}&item_name=Vault78_Bounty_Entry&amount=2.00&currency_code=USD`, '_blank');
         }
 
         function unlockVaultInterface() {
             document.getElementById('vault-input').disabled = false;
-            document.getElementById('vault-input').placeholder = "ENTER KEY...";
+            document.getElementById('vault-input').placeholder = "ENTER MASTER KEY...";
             document.getElementById('breach-btn').disabled = false;
             document.getElementById('breach-btn').style.opacity = "1";
             document.getElementById('breach-btn').style.cursor = "pointer";
@@ -97,13 +122,21 @@
             const result = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
             if (result === TARGET) {
-                document.body.innerHTML = "<div style='color:#00ff00; text-align:center; margin-top:20%; font-family:monospace;'><h1>VAULT BREACHED</h1><p>CLAIM $1,000 BY DMING THE ARCHITECT.</p></div>";
+                document.body.innerHTML = `
+                    <div style="background:#000; color:#00ff00; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:20px;">
+                        <h1>VAULT BREACHED SUCCESSFULLY</h1>
+                        <p style="font-size:1.5rem;">[GENESIS STATUS: CLEAR]</p>
+                        <p>To claim your $1,000 Bounty and Gemini Pro Lifetime Access,</p>
+                        <p>email the Master Key and your Transaction ID to:</p>
+                        <p style="border:1px solid #fff; padding:10px;">${ARCHITECT_EMAIL}</p>
+                    </div>`;
             } else {
-                alert("CRITICAL ERROR: HASH MISMATCH.");
+                alert("DECRYPTION FAILED: SYSTEM RESETTING.");
                 location.reload();
             }
         }
 
+        // HIDDEN ADMIN OVERLAY (Shift + G)
         window.addEventListener('keydown', (e) => {
             if (e.shiftKey && e.key === 'G') {
                 const overlay = document.getElementById('admin-overlay');
